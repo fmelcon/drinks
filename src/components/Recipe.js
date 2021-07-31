@@ -1,6 +1,8 @@
 import React, { useContext, useState } from "react";
 import { ModalContext } from "../context/ModalContext";
 
+import "react-lazy-load-image-component/src/effects/blur.css";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import Modal from "@material-ui/core/Modal";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -65,11 +67,15 @@ const Recipe = ({ recipe }) => {
         <h5 className="card-header text-white text-center">
           {recipe.strDrink}
         </h5>
-        <img
-          className="card-img-top"
-          src={recipe.strDrinkThumb}
-          alt={`Imagen de ${recipe.strDrink}`}
-        />
+
+        <div className="bg-light tarjeta">
+          <LazyLoadImage
+            className="card-img-top tarjeta__img"
+            src={recipe.strDrinkThumb}
+            effect="blur"
+            alt={`Imagen de ${recipe.strDrink}`}
+          />
+        </div>
         <div className="card-body">
           <button
             onClick={() => {
@@ -91,15 +97,15 @@ const Recipe = ({ recipe }) => {
             }}
           >
             <div style={modalStyle} className={classes.paper}>
-              <h2 className="text-center bg-light">{receta.strDrink}</h2>
-              <h3 className="mt-4 text-danger">Instrucciones</h3>
+              <h4 className="text-center bg-light">{receta.strDrink}</h4>
+              <h5 className="mt-4 text-danger">Instrucciones</h5>
               <p className="text-muted">{receta.strInstructions}</p>
               <img
                 className="card-img-top my-4"
                 src={receta.strDrinkThumb}
                 alt={receta.strDrink}
               />
-              <h4 className="mt-4 text-danger">Ingredientes y Cantidades</h4>
+              <h5 className="mt-4 text-danger">Ingredientes y Cantidades</h5>
               <ul className="text-muted">{mostrarIngredientes(receta)}</ul>
             </div>
           </Modal>

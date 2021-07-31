@@ -3,7 +3,7 @@ import React from "react";
 const Header = () => {
   return (
     <header className="bg-light">
-      <h1>Busca recetas de bebidas</h1>
+      <h3 className="text-center">Busca recetas de bebidas</h3>
     </header>
   );
 };
